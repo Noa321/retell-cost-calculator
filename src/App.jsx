@@ -8,26 +8,20 @@ const VOICE_ENGINES = {
 };
 
 const LLM_MODELS = {
+  'gpt_5_2': { name: 'GPT 5.2', rate: 0.056 },
+  'gpt_5_1': { name: 'GPT 5.1', rate: 0.040 },
   'gpt_5': { name: 'GPT 5', rate: 0.040 },
-  'gpt_5_fast': { name: 'GPT 5 (Fast)', rate: 0.080 },
   'gpt_5_mini': { name: 'GPT 5 mini', rate: 0.012 },
-  'gpt_5_mini_fast': { name: 'GPT 5 mini (Fast)', rate: 0.024 },
   'gpt_5_nano': { name: 'GPT 5 nano', rate: 0.003 },
   'gpt_4_1': { name: 'GPT 4.1', rate: 0.045 },
-  'gpt_4_1_fast': { name: 'GPT 4.1 (Fast)', rate: 0.0675 },
   'gpt_4_1_mini': { name: 'GPT 4.1 mini', rate: 0.016 },
-  'gpt_4_1_mini_fast': { name: 'GPT 4.1 mini (Fast)', rate: 0.024 },
   'gpt_4_1_nano': { name: 'GPT 4.1 nano', rate: 0.004 },
-  'gpt_4o': { name: 'GPT 4o', rate: 0.050 },
-  'gpt_4o_fast': { name: 'GPT 4o (Fast)', rate: 0.075 },
-  'gpt_4o_mini': { name: 'GPT 4o mini', rate: 0.006 },
-  'gpt_4o_mini_fast': { name: 'GPT 4o mini (Fast)', rate: 0.009 },
   'claude_4_5_sonnet': { name: 'Claude 4.5 Sonnet', rate: 0.080 },
   'claude_4_5_haiku': { name: 'Claude 4.5 Haiku', rate: 0.025 },
-  'claude_3_7_sonnet': { name: 'Claude 3.7 Sonnet', rate: 0.060 },
   'claude_3_5_haiku': { name: 'Claude 3.5 Haiku', rate: 0.020 },
-  'gemini_2_flash': { name: 'Gemini 2.0 Flash', rate: 0.006 },
-  'gemini_2_flash_lite': { name: 'Gemini 2.0 Flash Lite', rate: 0.003 },
+  'gemini_3_flash': { name: 'Gemini 3.0 Flash', rate: 0.027 },
+  'gemini_2_5_flash': { name: 'Gemini 2.5 Flash', rate: 0.035 },
+  'gemini_2_5_flash_lite': { name: 'Gemini 2.5 Flash Lite', rate: 0.006 },
 };
 
 const TELEPHONY = {
@@ -650,7 +644,7 @@ export default function RetellCostCalculator() {
                 <li>• Keep base tokens under 3,500</li>
                 <li>• Use Knowledge Base instead of long prompts</li>
                 <li>• Split complex prompts into nodes/states</li>
-                <li>• Gemini 2.0 Flash is $0.006/min vs GPT at $0.045+</li>
+                <li>• Gemini 2.5 Flash Lite is $0.006/min vs GPT at $0.04+</li>
                 <li>• Minimize tool descriptions</li>
               </ul>
             </div>
