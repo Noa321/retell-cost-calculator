@@ -178,20 +178,20 @@ export default function RetellCostCalculator() {
   const formatCurrency2 = (val) => `$${val.toFixed(2)}`;
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-6">
+    <div className="min-h-screen bg-gray-900 text-white p-4 md:p-6">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-3xl font-bold mb-1">Retell.ai Cost Calculator</h1>
-        <p className="text-gray-400 mb-6">Enter the token count from your Retell dashboard for accurate estimates</p>
+        <h1 className="text-2xl md:text-3xl font-bold mb-1">Retell.ai Cost Calculator</h1>
+        <p className="text-gray-400 text-sm mb-6">Enter the token count from your Retell dashboard for accurate estimates</p>
         
-        <div className="grid grid-cols-3 gap-6">
-          <div className="col-span-2 space-y-5">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2 space-y-5">
             
             {/* Dashboard Token Input */}
-            <div className="bg-gradient-to-r from-orange-900/50 to-yellow-900/50 border border-orange-600 rounded-lg p-5">
+            <div className="bg-gradient-to-r from-orange-900/50 to-yellow-900/50 border border-orange-600 rounded-lg p-4 md:p-5">
               <h2 className="text-lg font-semibold mb-1 text-orange-400">📊 Dashboard Token Count</h2>
-              <p className="text-xs text-gray-400 mb-4">Enter the token count shown in your Retell agent dashboard (e.g., "2812-3452 tokens" → enter 3132)</p>
+              <p className="text-xs text-gray-400 mb-4">Enter the token count shown in your Retell agent dashboard</p>
               
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm text-gray-300 mb-2">Base Tokens (from dashboard)</label>
                   <input 
@@ -201,7 +201,7 @@ export default function RetellCostCalculator() {
                     className="w-full bg-gray-800 rounded-lg px-4 py-3 text-white text-xl font-bold border-2 border-orange-500 focus:border-orange-400 focus:outline-none"
                     placeholder="3132"
                   />
-                  <p className="text-xs text-gray-500 mt-1">This is your prompt + tools + states before any conversation</p>
+                  <p className="text-xs text-gray-500 mt-1">Prompt + tools + states before conversation</p>
                 </div>
                 
                 <div>
@@ -215,7 +215,7 @@ export default function RetellCostCalculator() {
                       <option key={key} value={key}>{val.name} (+{val.rate}/min)</option>
                     ))}
                   </select>
-                  <p className="text-xs text-gray-500 mt-1">How fast tokens grow as conversation continues</p>
+                  <p className="text-xs text-gray-500 mt-1">How fast tokens grow during call</p>
                 </div>
               </div>
               
@@ -226,21 +226,21 @@ export default function RetellCostCalculator() {
                     style={{ width: `${Math.min(100, (tokens / TOKEN_THRESHOLD) * 100)}%` }}
                   />
                 </div>
-                <span className="text-sm">
+                <span className="text-sm whitespace-nowrap">
                   {tokens > TOKEN_THRESHOLD ? (
-                    <span className="text-red-400">⚠️ Already over 3,500!</span>
+                    <span className="text-red-400">⚠️ Over 3,500!</span>
                   ) : (
-                    <span className="text-gray-400">{TOKEN_THRESHOLD - tokens} tokens until surcharge</span>
+                    <span className="text-gray-400">{TOKEN_THRESHOLD - tokens} until surcharge</span>
                   )}
                 </span>
               </div>
             </div>
             
             {/* Agent Configuration */}
-            <div className="bg-gray-800 rounded-lg p-5">
+            <div className="bg-gray-800 rounded-lg p-4 md:p-5">
               <h2 className="text-lg font-semibold mb-4 text-blue-400">🎙️ Agent Configuration</h2>
               
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
                   <label className="block text-sm text-gray-400 mb-2">Voice Engine</label>
                   <select 
@@ -325,12 +325,12 @@ export default function RetellCostCalculator() {
             </div>
             
             {/* Call Duration Range */}
-            <div className="bg-gray-800 rounded-lg p-5">
+            <div className="bg-gray-800 rounded-lg p-4 md:p-5">
               <h2 className="text-lg font-semibold mb-4 text-green-400">⏱️ Call Duration Range</h2>
               
               <div className="grid grid-cols-3 gap-4">
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">Min Duration (min)</label>
+                  <label className="block text-sm text-gray-400 mb-2">Min (min)</label>
                   <input 
                     type="text"
                     value={minCallDuration}
@@ -341,7 +341,7 @@ export default function RetellCostCalculator() {
                 </div>
                 
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">Avg Duration (min)</label>
+                  <label className="block text-sm text-gray-400 mb-2">Avg (min)</label>
                   <input 
                     type="text"
                     value={avgCallDuration}
@@ -352,7 +352,7 @@ export default function RetellCostCalculator() {
                 </div>
                 
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">Max Duration (min)</label>
+                  <label className="block text-sm text-gray-400 mb-2">Max (min)</label>
                   <input 
                     type="text"
                     value={maxCallDuration}
@@ -365,7 +365,7 @@ export default function RetellCostCalculator() {
             </div>
             
             {/* Cost by Duration Table */}
-            <div className="bg-gray-800 rounded-lg p-5">
+            <div className="bg-gray-800 rounded-lg p-4 md:p-5">
               <h2 className="text-lg font-semibold mb-4 text-purple-400">📋 Cost by Call Duration</h2>
               
               <div className="overflow-x-auto">
@@ -377,11 +377,11 @@ export default function RetellCostCalculator() {
                       <th className="text-right py-2 px-2">Scaling</th>
                       <th className="text-right py-2 px-2">Rate/min</th>
                       <th className="text-right py-2 px-2">Surcharge</th>
-                      <th className="text-right py-2 px-2">Total Cost</th>
+                      <th className="text-right py-2 px-2">Total</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {calculations.rangeTable.map((row, idx) => (
+                    {calculations.rangeTable.map((row) => (
                       <tr 
                         key={row.duration} 
                         className={`border-b border-gray-700 ${row.duration === avgDur ? 'bg-green-900/30' : ''}`}
@@ -409,7 +409,7 @@ export default function RetellCostCalculator() {
             </div>
             
             {/* Campaign Parameters */}
-            <div className="bg-gray-800 rounded-lg p-5">
+            <div className="bg-gray-800 rounded-lg p-4 md:p-5">
               <h2 className="text-lg font-semibold mb-4 text-cyan-400">📊 Campaign Volume</h2>
               
               <div className="grid grid-cols-2 gap-4">
@@ -473,7 +473,7 @@ export default function RetellCostCalculator() {
             {/* Monthly Totals */}
             <div className="bg-gradient-to-br from-green-900 to-green-700 rounded-lg p-5">
               <p className="text-green-300 text-sm mb-1">Estimated Monthly Cost</p>
-              <p className="text-4xl font-bold">{formatCurrency2(calculations.monthlyCost)}</p>
+              <p className="text-3xl md:text-4xl font-bold">{formatCurrency2(calculations.monthlyCost)}</p>
               <p className="text-green-300 text-xs mt-2">
                 {calculations.callsPerMonth.toLocaleString()} calls × {formatCurrency2(calculations.avgCalc.totalCost)}/call
               </p>
@@ -660,7 +660,7 @@ export default function RetellCostCalculator() {
         {/* Formula Reference */}
         <div className="mt-6 bg-gray-800 rounded-lg p-4">
           <h3 className="text-sm font-semibold mb-2 text-gray-300">📐 Token Surcharge Formula (from Retell docs)</h3>
-          <div className="flex gap-4 text-xs">
+          <div className="flex flex-wrap gap-2 md:gap-4 text-xs">
             <code className="bg-gray-700 px-3 py-1 rounded text-blue-400">Scaling Factor = Total Tokens ÷ 3,500</code>
             <code className="bg-gray-700 px-3 py-1 rounded text-blue-400">Billed LLM = Base LLM Rate × Scaling Factor</code>
             <span className="text-gray-500">Only applies when tokens &gt; 3,500</span>
